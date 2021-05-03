@@ -4,39 +4,34 @@ import { HttpLink } from 'apollo-link-http'
 
 export const client = new ApolloClient({
   link: new HttpLink({
-    uri: 'https://api.thegraph.com/subgraphs/name/ianlapham/uniswapv2',
+    uri: 'https://ewc-subgraph-production.carbonswap.exchange/subgraphs/name/carbonswap/uniswapv2',
   }),
   cache: new InMemoryCache(),
   shouldBatch: true,
 })
+
 
 export const healthClient = new ApolloClient({
   link: new HttpLink({
-    uri: 'https://api.thegraph.com/index-node/graphql',
+    uri: 'https://ewc-graphql-production.carbonswap.exchange/graphql',
   }),
   cache: new InMemoryCache(),
   shouldBatch: true,
 })
 
-export const v1Client = new ApolloClient({
-  link: new HttpLink({
-    uri: 'https://api.thegraph.com/subgraphs/name/ianlapham/uniswap',
-  }),
-  cache: new InMemoryCache(),
-  shouldBatch: true,
-})
-
+/*
 export const stakingClient = new ApolloClient({
   link: new HttpLink({
-    uri: 'https://api.thegraph.com/subgraphs/name/way2rach/talisman',
+    uri: 'https://ewc-subgraph-production.carbonswap.exchange/subgraphs/name/way2rach/talisman',
   }),
   cache: new InMemoryCache(),
   shouldBatch: true,
 })
+*/
 
 export const blockClient = new ApolloClient({
   link: new HttpLink({
-    uri: 'https://api.thegraph.com/subgraphs/name/blocklytics/ethereum-blocks',
+    uri: 'https://ewc-subgraph-production.carbonswap.exchange/subgraphs/name/blocklytics/ewc-blocks',
   }),
   cache: new InMemoryCache(),
 })

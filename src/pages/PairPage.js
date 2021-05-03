@@ -203,7 +203,7 @@ function PairPage({ pairAddress, history }) {
             <TYPE.light style={{ textAlign: 'center' }}>
               {BLOCKED_WARNINGS[pairAddress] ?? `This pair is not supported.`}
             </TYPE.light>
-            <Link external={true} href={'https://etherscan.io/address/' + pairAddress}>{`More about ${shortenAddress(
+            <Link external={true} href={'https://explorer.energyweb.org/address/' + pairAddress}>{`More about ${shortenAddress(
               pairAddress
             )}`}</Link>
           </AutoColumn>
@@ -311,9 +311,8 @@ function PairPage({ pairAddress, history }) {
                   <TokenLogo address={token0?.id} size={'16px'} />
                   <TYPE.main fontSize={'16px'} lineHeight={1} fontWeight={500} ml={'4px'}>
                     {token0 && token1
-                      ? `1 ${formattedSymbol0} = ${token0Rate} ${formattedSymbol1} ${
-                          parseFloat(token0?.derivedETH) ? '(' + token0USD + ')' : ''
-                        }`
+                      ? `1 ${formattedSymbol0} = ${token0Rate} ${formattedSymbol1} ${parseFloat(token0?.derivedETH) ? '(' + token0USD + ')' : ''
+                      }`
                       : '-'}
                   </TYPE.main>
                 </RowFixed>
@@ -323,9 +322,8 @@ function PairPage({ pairAddress, history }) {
                   <TokenLogo address={token1?.id} size={'16px'} />
                   <TYPE.main fontSize={'16px'} lineHeight={1} fontWeight={500} ml={'4px'}>
                     {token0 && token1
-                      ? `1 ${formattedSymbol1} = ${token1Rate} ${formattedSymbol0}  ${
-                          parseFloat(token1?.derivedETH) ? '(' + token1USD + ')' : ''
-                        }`
+                      ? `1 ${formattedSymbol1} = ${token1Rate} ${formattedSymbol0}  ${parseFloat(token1?.derivedETH) ? '(' + token1USD + ')' : ''
+                      }`
                       : '-'}
                   </TYPE.main>
                 </RowFixed>
@@ -500,8 +498,8 @@ function PairPage({ pairAddress, history }) {
                     </AutoRow>
                   </Column>
                   <ButtonLight color={backgroundColor}>
-                    <Link color={backgroundColor} external href={'https://etherscan.io/address/' + pairAddress}>
-                      View on Etherscan ↗
+                    <Link color={backgroundColor} external href={'https://explorer.energyweb.org/address/' + pairAddress}>
+                      View on Explorer ↗
                     </Link>
                   </ButtonLight>
                 </TokenDetailsLayout>

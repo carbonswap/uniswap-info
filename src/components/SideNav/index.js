@@ -163,6 +163,7 @@ function SideNav({ history }) {
             )}
           </AutoColumn>
           <AutoColumn gap="0.5rem" style={{ marginLeft: '.75rem', marginBottom: '4rem' }}>
+            {/*
             <HeaderText>
               <Link href="https://uniswap.org" target="_blank">
                 Uniswap.org
@@ -173,8 +174,9 @@ function SideNav({ history }) {
                 V1 Analytics
               </Link>
             </HeaderText>
+             */}
             <HeaderText>
-              <Link href="https://uniswap.org/docs/v2" target="_blank">
+              <Link href="https://docs.carbonswap.exchange" target="_blank">
                 Docs
               </Link>
             </HeaderText>
@@ -184,7 +186,7 @@ function SideNav({ history }) {
               </Link>
             </HeaderText>
             <HeaderText>
-              <Link href="https://twitter.com/UniswapProtocol" target="_blank">
+              <Link href="https://twitter.com/carbonswap_fi" target="_blank">
                 Twitter
               </Link>
             </HeaderText>

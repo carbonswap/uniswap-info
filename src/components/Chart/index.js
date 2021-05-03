@@ -63,8 +63,8 @@ const Chart = ({ data, chartOption, currencyUnit, symbol }) => {
               strokeWidth={2}
               dot={false}
               type="monotone"
-              name={currencyUnit === 'ETH' ? 'Price (ETH/' + symbol + ')' : 'Price (USD/' + symbol + ')'}
-              dataKey={currencyUnit === 'ETH' ? 'ethPerToken' : 'tokenPriceUSD'}
+              name={currencyUnit === 'EWT' ? 'Price (EWT/' + symbol + ')' : 'Price (USD/' + symbol + ')'}
+              dataKey={currencyUnit === 'EWT' ? 'ethPerToken' : 'tokenPriceUSD'}
               yAxisId={2}
               fill="var(--c-token)"
               opacity={'0.4'}
@@ -74,7 +74,7 @@ const Chart = ({ data, chartOption, currencyUnit, symbol }) => {
               strokeWidth={2}
               dot={false}
               type="monotone"
-              name={currencyUnit === 'USD' ? 'Inverse (' + symbol + '/USD)' : 'Inverse (' + symbol + '/ETH)'}
+              name={currencyUnit === 'USD' ? 'Inverse (' + symbol + '/USD)' : 'Inverse (' + symbol + '/EWT)'}
               dataKey={currencyUnit === 'USD' ? 'tokensPerUSD' : 'tokensPerEth'}
               yAxisId={3}
               fill="var(--c-token)"
@@ -153,7 +153,7 @@ const Chart = ({ data, chartOption, currencyUnit, symbol }) => {
               strokeWidth={2}
               dot={false}
               type="monotone"
-              name={'Total Liquidity' + (currencyUnit === 'USD' ? ' (USD)' : ' (ETH)')}
+              name={'Total Liquidity' + (currencyUnit === 'USD' ? ' (USD)' : ' (EWT)')}
               dataKey={currencyUnit === 'USD' ? 'usdLiquidity' : 'ethLiquidity'}
               yAxisId={0}
               fill="var(--c-token)"
@@ -162,7 +162,7 @@ const Chart = ({ data, chartOption, currencyUnit, symbol }) => {
             />
             <Area
               type="monotone"
-              name={'Eth Balance'}
+              name={'Ewt Balance'}
               dataKey={'ethBalance'}
               fill="var(--c-token)"
               opacity={'0'}
@@ -222,7 +222,7 @@ const Chart = ({ data, chartOption, currencyUnit, symbol }) => {
             />
             <Bar
               type="monotone"
-              name={'Volume' + (currencyUnit === 'USD' ? ' (USD)' : ' (ETH)')}
+              name={'Volume' + (currencyUnit === 'USD' ? ' (USD)' : ' (EWT)')}
               dataKey={currencyUnit === 'USD' ? 'usdVolume' : 'ethVolume'}
               fill="var(--c-token)"
               opacity={'0.4'}
