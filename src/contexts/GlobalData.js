@@ -274,6 +274,8 @@ async function getGlobalData(ethPrice, oldEthPrice) {
     })
     const twoWeekData = twoWeekResult.data.uniswapFactories[0]
 
+    console.log('getGlobalData', { result, oneDayResult, twoDayResult, oneWeekResult })
+
     if (data && oneDayData && twoDayData && twoWeekData) {
       let [oneDayVolumeUSD, volumeChangeUSD] = get2DayPercentChange(
         data.totalVolumeUSD,
@@ -348,7 +350,7 @@ const getChartData = async (oldestDateToFetch, offsetData) => {
       }
     }
 
-    if (data) {
+    if (data && data.length > 0) {
       let dayIndexSet = new Set()
       let dayIndexArray = []
       const oneDay = 24 * 60 * 60
@@ -362,6 +364,7 @@ const getChartData = async (oldestDateToFetch, offsetData) => {
       })
 
       // fill in empty days ( there will be no day datas if no trades made that day )
+
       let timestamp = data[0].date ? data[0].date : oldestDateToFetch
       let latestLiquidityUSD = data[0].totalLiquidityUSD
       let latestDayDats = data[0].mostLiquidTokens
@@ -477,6 +480,8 @@ const getEthPrice = async () => {
 
   try {
     let oneDayBlock = await getBlockFromTimestamp(utcOneDayBack)
+
+    console.log('yolo ETH_PRICE', { oneDayBlock, ETH_PRICE: ETH_PRICE() })
     let result = await client.query({
       query: ETH_PRICE(),
       fetchPolicy: 'cache-first',
@@ -485,6 +490,9 @@ const getEthPrice = async () => {
       query: ETH_PRICE(oneDayBlock),
       fetchPolicy: 'cache-first',
     })
+
+    console.log('yolo ETH_PRICE 2', { result, resultOneDay })
+
     const currentPrice = result?.data?.bundles[0]?.ethPrice
     const oneDayBackPrice = resultOneDay?.data?.bundles[0]?.ethPrice
     priceChangeETH = getPercentChange(currentPrice, oneDayBackPrice)
@@ -563,6 +571,8 @@ export function useGlobalData() {
   const [state, { update, updateAllPairsInUniswap, updateAllTokensInUniswap }] = useGlobalDataContext()
   const [ethPrice, oldEthPrice] = useEthPrice()
 
+  console.log('yolo useGlobalData', { ethPrice, oldEthPrice })
+
   const data = state?.globalData
 
   // const combinedVolume = useTokenDataCombined(offsetVolumes)
@@ -572,6 +582,8 @@ export function useGlobalData() {
       let globalData = await getGlobalData(ethPrice, oldEthPrice)
 
       globalData && update(globalData)
+
+      console.log('yolo GlobalData', { globalData })
 
       let allPairs = await getAllPairsOnUniswap()
       updateAllPairsInUniswap(allPairs)
@@ -708,7 +720,7 @@ export function useTopLps() {
             if (results) {
               return results.liquidityPositions
             }
-          } catch (e) {}
+          } catch (e) { }
         })
       )
 

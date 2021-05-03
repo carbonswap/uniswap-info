@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useReducer, useMemo, useCallback, useEffect, useState } from 'react'
 import { useAllPairData, usePairData } from './PairData'
-import { client, stakingClient } from '../apollo/client'
+import { client, /*stakingClient*/ } from '../apollo/client'
 import {
   USER_TRANSACTIONS,
   USER_POSITIONS,
@@ -420,7 +420,7 @@ export function useUserLiquidityChart(account) {
               totalUSD +
               (ownershipPerPair[dayData.pairAddress]
                 ? (parseFloat(ownershipPerPair[dayData.pairAddress].lpTokenBalance) / parseFloat(dayData.totalSupply)) *
-                  parseFloat(dayData.reserveUSD)
+                parseFloat(dayData.reserveUSD)
                 : 0))
           } else {
             return totalUSD
@@ -495,6 +495,7 @@ export function useMiningPositions(account) {
     async function fetchData(account) {
       try {
         let miningPositionData = []
+        /*
         let result = await stakingClient.query({
           query: MINING_POSITIONS(account),
           fetchPolicy: 'no-cache',
@@ -508,6 +509,7 @@ export function useMiningPositions(account) {
           miningPosition.pairData = allPairData[pairAddress]
         }
         updateMiningPositions(account, miningPositionData)
+        */
       } catch (e) {
         console.log(e)
       }

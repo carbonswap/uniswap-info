@@ -1,20 +1,19 @@
-export const FACTORY_ADDRESS = '0x5C69bEe701ef814a2B6a3EDD4B1652CB9cc5aA6f'
+export const FACTORY_ADDRESS = '0x17854c8d5a41d5A89B275386E24B2F38FD0AfbDd'
 
 export const BUNDLE_ID = '1'
 
 export const timeframeOptions = {
   WEEK: '1 week',
-  MONTH: '1 month',
+  //MONTH: '1 month',
   // THREE_MONTHS: '3 months',
   // YEAR: '1 year',
-  HALF_YEAR: '6 months',
+  //HALF_YEAR: '6 months',
   ALL_TIME: 'All time',
 }
 
 // token list urls to fetch tokens from - use for warnings on tokens and pairs
 export const SUPPORTED_LIST_URLS__NO_ENS = [
-  'https://gateway.ipfs.io/ipns/tokens.uniswap.org',
-  'https://www.coingecko.com/tokens_list/uniswap/defi_100/v_0_0_0.json',
+  'https://raw.githubusercontent.com/carbonswap/assets/master/carbonswap/Carbonswap_List.json'
 ]
 
 // hide from overview list
@@ -53,7 +52,7 @@ export const BLOCKED_WARNINGS = {
  */
 export const FEE_WARNING_TOKENS = ['0xd46ba6d942050d489dbd938a2c909a5d5039a161']
 
-export const UNTRACKED_COPY = 'Derived USD values may be inaccurate without liquid stablecoin or ETH pairings.'
+export const UNTRACKED_COPY = 'Derived USD values may be inaccurate without liquid stablecoin or EWT pairings.'
 
 // tokens that should be tracked but arent due to lag in subgraph
 export const TRACKED_OVERRIDES = [

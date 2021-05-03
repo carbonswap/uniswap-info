@@ -40,16 +40,15 @@ export function getTimeframe(timeWindow) {
 export function getPoolLink(token0Address, token1Address = null, remove = false) {
   if (!token1Address) {
     return (
-      `https://uniswap.exchange/` +
+      `https://carbonswap.exchange/` +
       (remove ? `remove` : `add`) +
-      `/${token0Address === '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2' ? 'ETH' : token0Address}/${'ETH'}`
+      `/${token0Address?.toLowerCase() === '0x6b3bd0478df0ec4984b168db0e12a539cc0c83cd' ? 'EWT' : token0Address}/${'EWT'}`
     )
   } else {
     return (
-      `https://uniswap.exchange/` +
+      `https://carbonswap.exchange/` +
       (remove ? `remove` : `add`) +
-      `/${token0Address === '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2' ? 'ETH' : token0Address}/${
-        token1Address === '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2' ? 'ETH' : token1Address
+      `/${token0Address?.toLowerCase() === '0x6b3bd0478df0ec4984b168db0e12a539cc0c83cd' ? 'EWT' : token0Address}/${token1Address === '0x6b3bd0478df0ec4984b168db0e12a539cc0c83cd' ? 'EWT' : token1Address
       }`
     )
   }
@@ -57,25 +56,24 @@ export function getPoolLink(token0Address, token1Address = null, remove = false)
 
 export function getSwapLink(token0Address, token1Address = null) {
   if (!token1Address) {
-    return `https://uniswap.exchange/swap?inputCurrency=${token0Address}`
+    return `https://carbonswap.exchange/swap?inputCurrency=${token0Address}`
   } else {
-    return `https://uniswap.exchange/swap?inputCurrency=${
-      token0Address === '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2' ? 'ETH' : token0Address
-    }&outputCurrency=${token1Address === '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2' ? 'ETH' : token1Address}`
+    return `https://carbonswap.exchange/swap?inputCurrency=${token0Address?.toLowerCase() === '0x6b3bd0478df0ec4984b168db0e12a539cc0c83cd' ? 'EWT' : token0Address
+      }&outputCurrency=${token1Address?.toLowerCase() === '0x6b3bd0478df0ec4984b168db0e12a539cc0c83cd' ? 'EWT' : token1Address}`
   }
 }
 
 export function getMiningPoolLink(token0Address) {
-  return `https://app.uniswap.org/#/uni/ETH/${token0Address}`
+  return `https://carbonswap.exchange/#/uni/ETH/${token0Address}`
 }
 
 export function getUniswapAppLink(linkVariable) {
-  let baseUniswapUrl = 'https://app.uniswap.org/#/uni'
+  let baseUniswapUrl = 'https://carbonswap.exchange/'
   if (!linkVariable) {
     return baseUniswapUrl
   }
 
-  return `${baseUniswapUrl}/ETH/${linkVariable}`
+  return `${baseUniswapUrl}/EWT/${linkVariable}`
 }
 
 export function localNumber(val) {
@@ -157,6 +155,12 @@ export async function getBlockFromTimestamp(timestamp) {
     },
     fetchPolicy: 'cache-first',
   })
+  console.log('GET_BLOCK',
+    {
+      timestampFrom: timestamp,
+      timestampTo: timestamp + 600,
+      result
+    })
   return result?.data?.blocks?.[0]?.number
 }
 
@@ -303,10 +307,10 @@ export const setThemeColor = (theme) => document.documentElement.style.setProper
 export const Big = (number) => new BigNumber(number)
 
 export const urls = {
-  showTransaction: (tx) => `https://etherscan.io/tx/${tx}/`,
-  showAddress: (address) => `https://www.etherscan.io/address/${address}/`,
-  showToken: (address) => `https://www.etherscan.io/token/${address}/`,
-  showBlock: (block) => `https://etherscan.io/block/${block}/`,
+  showTransaction: (tx) => `https://explorer.energyweb.org/tx/${tx}/`,
+  showAddress: (address) => `https://explorer.energyweb.org/address/${address}/`,
+  showToken: (address) => `https://explorer.energyweb.org/token/${address}/`,
+  showBlock: (block) => `https://explorer.energyweb.org/block/${block}/`,
 }
 
 export const formatTime = (unix) => {
