@@ -37,18 +37,20 @@ export function getTimeframe(timeWindow) {
   return utcStartTime
 }
 
+const WEWT_ADDRESS = '0x6b3bd0478df0ec4984b168db0e12a539cc0c83cd'.toLowerCase()
+
 export function getPoolLink(token0Address, token1Address = null, remove = false) {
   if (!token1Address) {
     return (
       `https://carbonswap.exchange/` +
       (remove ? `remove` : `add`) +
-      `/${token0Address?.toLowerCase() === '0x6b3bd0478df0ec4984b168db0e12a539cc0c83cd' ? 'EWT' : token0Address}/${'EWT'}`
+      `/${token0Address?.toLowerCase() === WEWT_ADDRESS ? 'EWT' : token0Address}/${'EWT'}`
     )
   } else {
     return (
       `https://carbonswap.exchange/` +
       (remove ? `remove` : `add`) +
-      `/${token0Address?.toLowerCase() === '0x6b3bd0478df0ec4984b168db0e12a539cc0c83cd' ? 'EWT' : token0Address}/${token1Address === '0x6b3bd0478df0ec4984b168db0e12a539cc0c83cd' ? 'EWT' : token1Address
+      `/${token0Address?.toLowerCase() === WEWT_ADDRESS ? 'EWT' : token0Address}/${token1Address === WEWT_ADDRESS ? 'EWT' : token1Address
       }`
     )
   }
@@ -56,10 +58,10 @@ export function getPoolLink(token0Address, token1Address = null, remove = false)
 
 export function getSwapLink(token0Address, token1Address = null) {
   if (!token1Address) {
-    return `https://carbonswap.exchange/swap?inputCurrency=${token0Address}`
+    return `https://carbonswap.exchange/swap?inputCurrency=${token0Address?.toLowerCase()}`
   } else {
-    return `https://carbonswap.exchange/swap?inputCurrency=${token0Address?.toLowerCase() === '0x6b3bd0478df0ec4984b168db0e12a539cc0c83cd' ? 'EWT' : token0Address
-      }&outputCurrency=${token1Address?.toLowerCase() === '0x6b3bd0478df0ec4984b168db0e12a539cc0c83cd' ? 'EWT' : token1Address}`
+    return `https://carbonswap.exchange/swap?inputCurrency=${token0Address?.toLowerCase() === WEWT_ADDRESS ? 'EWT' : token0Address
+      }&outputCurrency=${token1Address?.toLowerCase() === WEWT_ADDRESS ? 'EWT' : token1Address}`
   }
 }
 

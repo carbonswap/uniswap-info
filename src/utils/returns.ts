@@ -4,8 +4,8 @@ import dayjs from 'dayjs'
 import { getShareValueOverTime } from '.'
 
 export const priceOverrides = [
-  '0x9DaD43ee9E09837aeAca21799c88613e8E7c67dd', // USDC
-  '0x3862F260e94904aaAe628DdF427b1F662652BBD2', // DAI
+  '0x9DaD43ee9E09837aeAca21799c88613e8E7c67dd'.toLowerCase(), // USDC
+  '0x3862F260e94904aaAe628DdF427b1F662652BBD2'.toLowerCase(), // DAI
 ]
 
 interface ReturnMetrics {
@@ -28,7 +28,9 @@ interface Position {
   token1PriceUSD: number
 }
 
-const PRICE_DISCOVERY_START_TIMESTAMP = 1589747086
+const PRICE_DISCOVERY_START_TIMESTAMP = 1000000 //1589747086 <-- original. wtf is this, just put some low value to see
+
+const WEWT_ADDRESS = '0x6b3bd0478df0ec4984b168db0e12a539cc0c83cd'.toLowerCase()
 
 function formatPricesForEarlyTimestamps(position): Position {
   if (position.timestamp < PRICE_DISCOVERY_START_TIMESTAMP) {
@@ -39,10 +41,10 @@ function formatPricesForEarlyTimestamps(position): Position {
       position.token1PriceUSD = 1
     }
     // WETH price
-    if (position.pair?.token0.id?.toLowerCase() === '0x6b3bd0478df0ec4984b168db0e12a539cc0c83cd') {
+    if (position.pair?.token0.id?.toLowerCase() === WEWT_ADDRESS) {
       position.token0PriceUSD = 203
     }
-    if (position.pair?.token1.id?.toLowerCase() === '0x6b3bd0478df0ec4984b168db0e12a539cc0c83cd') {
+    if (position.pair?.token1.id?.toLowerCase() === WEWT_ADDRESS) {
       position.token1PriceUSD = 203
     }
   }
