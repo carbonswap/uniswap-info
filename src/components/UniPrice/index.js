@@ -34,8 +34,8 @@ export default function UniPrice() {
       : 0
   }, [daiPair, usdcPair /*, usdtPair*/])
 
-  console.log('yolo daipair', daiPair)
-  console.log('yolo usdcpair', usdcPair)
+  //console.log('yolo daipair', daiPair)
+  //console.log('yolo usdcpair', usdcPair)
 
   const daiPerEth = daiPair ? parseFloat(daiPair.token0Price).toFixed(2) : '-'
   const usdcPerEth = usdcPair ? parseFloat(usdcPair.token1Price).toFixed(2) : '-'
