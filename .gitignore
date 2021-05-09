@@ -25,4 +25,5 @@ yarn-error.log*
 
 wrangler.toml
 dist
-workers-site
+workers-site/*
+!workers-site/index.js
