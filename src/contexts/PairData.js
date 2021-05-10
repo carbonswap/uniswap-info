@@ -185,7 +185,7 @@ export default function Provider({ children }) {
 async function getBulkPairData(pairList, ethPrice) {
   const [t1, t2, tWeek] = getTimestampsForChanges()
   let res = await getBlocksFromTimestamps([t1, t2, tWeek])
-  console.log('yolo getBulkPairData', res)
+  //console.log('yolo getBulkPairData', res)
   //let [{ number: b1 }, { number: b2 }, { number: bWeek }] = res
   const b1 = res[0]?.number
   const b2 = res[1]?.number
@@ -595,7 +595,7 @@ export function usePairData(pairAddress) {
   const [ethPrice] = useEthPrice()
   const pairData = state?.[pairAddress]
 
-  console.log('yolo usePairData', ethPrice, pairData)
+  //console.log('yolo usePairData', ethPrice, pairData)
 
   useEffect(() => {
     async function fetchData() {

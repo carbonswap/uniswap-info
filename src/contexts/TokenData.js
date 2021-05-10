@@ -868,7 +868,7 @@ export function useAllTokenData() {
 
   // filter out for only addresses
   return Object.keys(state)
-    .filter((key) => key !== 'combinedVol')
+    .filter((key) => state[key].id && state[key].priceUSD > 0 && key !== 'combinedVol')
     .reduce((res, key) => {
       res[key] = state[key]
       return res

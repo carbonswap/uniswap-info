@@ -481,7 +481,7 @@ const getEthPrice = async () => {
   try {
     let oneDayBlock = await getBlockFromTimestamp(utcOneDayBack)
 
-    console.log('yolo ETH_PRICE', { oneDayBlock, ETH_PRICE: ETH_PRICE() })
+    //console.log('yolo ETH_PRICE', { oneDayBlock, ETH_PRICE: ETH_PRICE() })
     let result = await client.query({
       query: ETH_PRICE(),
       fetchPolicy: 'cache-first',
@@ -491,7 +491,7 @@ const getEthPrice = async () => {
       fetchPolicy: 'cache-first',
     })
 
-    console.log('yolo ETH_PRICE 2', { result, resultOneDay })
+    //console.log('yolo ETH_PRICE 2', { result, resultOneDay })
 
     const currentPrice = result?.data?.bundles[0]?.ethPrice
     const oneDayBackPrice = resultOneDay?.data?.bundles[0]?.ethPrice
@@ -571,7 +571,7 @@ export function useGlobalData() {
   const [state, { update, updateAllPairsInUniswap, updateAllTokensInUniswap }] = useGlobalDataContext()
   const [ethPrice, oldEthPrice] = useEthPrice()
 
-  console.log('yolo useGlobalData', { ethPrice, oldEthPrice })
+  //console.log('yolo useGlobalData', { ethPrice, oldEthPrice })
 
   const data = state?.globalData
 
@@ -583,7 +583,7 @@ export function useGlobalData() {
 
       globalData && update(globalData)
 
-      console.log('yolo GlobalData', { globalData })
+      //console.log('yolo GlobalData', { globalData })
 
       let allPairs = await getAllPairsOnUniswap()
       updateAllPairsInUniswap(allPairs)
