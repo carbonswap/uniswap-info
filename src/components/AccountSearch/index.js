@@ -141,7 +141,7 @@ function AccountSearch({ history, small }) {
           </Panel>
         )}
 
-        {small && (
+        {/* {small && (
           <>
             <TYPE.main>{'Accounts'}</TYPE.main>
             {savedAccounts?.length > 0 ? (
@@ -167,7 +167,7 @@ function AccountSearch({ history, small }) {
               <TYPE.light>No pinned wallets</TYPE.light>
             )}
           </>
-        )}
+        )} */}
       </AutoColumn>
     </AutoColumn>
   )
