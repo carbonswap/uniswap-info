@@ -44,7 +44,7 @@ export default function Title() {
   const below1080 = useMedia('(max-width: 1080px)')
 
   return (
-    <TitleWrapper onClick={() => history.push('/')}>
+    <TitleWrapper>
       <Flex alignItems="center" style={{ justifyContent: 'space-between' }}>
         <RowFixed>
           <UniIcon id="link" onClick={() => history.push('/')}>
@@ -82,7 +82,7 @@ export default function Title() {
               </Option>
             </BasicLink>
 
-            <BasicLink to="/accounts">
+            {/* <BasicLink to="/accounts">
               <Option
                 activeText={
                   (history.location.pathname.split('/')[1] === 'accounts' ||
@@ -92,7 +92,7 @@ export default function Title() {
               >
                 Accounts
               </Option>
-            </BasicLink>
+            </BasicLink> */}
           </RowFixed>
         )}
       </Flex>
